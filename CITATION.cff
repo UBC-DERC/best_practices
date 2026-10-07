@@ -1,0 +1,18 @@
+# Note you can add multiple authors to this citation file 
+# by following the convention already established here.
+# The full citation schema guide is here:
+# https://github.com/citation-file-format/citation-file-format/blob/1.2.0/schema-guide.md
+
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Goring"
+    given-names: "Simon"
+    orcid: https://orcid.org/0000-0002-2700-4605 
+    affiliation: University of British Columbia 
+abstract: "Monitoring project best practices with a Python observer."
+title: best-practices
+version: 26.10
+date-released: 2026-10-07
+url: https://github.com//best_practices
+license: MIT

@@ -1,0 +1,19 @@
+# Changes here will be overwritten by Copier
+_commit: v26.09.23
+_src_path: https://github.com/UBC-DERC/derc_copier
+any_award: false
+archived_data: false
+author_affiliation: University of British Columbia
+author_email: simon.goring@ubc.ca
+author_formal: Goring
+author_given: Simon
+author_orcid: https://orcid.org/0000-0002-2700-4605
+cihr_award: ''
+code_of_conduct_lang: code_en
+git_use: true
+include_quarto: false
+license_type: MIT
+primary_language: python
+project_description: Monitoring project best practices with a Python observer.
+project_title: best-practices
+template_profile: recommended

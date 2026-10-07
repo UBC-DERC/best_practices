@@ -1,0 +1,93 @@
+site_name: best-practices
+site_url: https://ubc-derc.github.io/derc_copier
+site_description: >-
+ Monitoring project best practices with a Python observer.
+site_author: Simon Goring
+copyright: >-
+  Copyright &copy; UBC Dairy Education and Research Centre (DERC)
+
+repo_url: https://github.com/UBC-DERC/derc_copier
+repo_name: UBC-DERC/derc_copier
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: en
+  font:
+    text: Source Sans 3
+    code: Roboto Mono
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.indexes
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.instant.prefetch
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.action.edit
+    - content.code.copy
+    - content.tabs.link
+  palette:
+    # Respect the reader's operating-system preference by default.
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+plugins:
+  - search
+  - social
+  - git-revision-date-localized:
+      type: date
+      fallback_to_build_date: true
+      enable_creation_date: true
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - def_list
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - stylesheets/ubc.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/UBC-DERC/derc_copier
+      name: DERC copier template on GitHub
+
+nav:
+  - Home: index.md
