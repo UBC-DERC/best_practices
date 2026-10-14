@@ -18,7 +18,7 @@ def _make_result(
     return CheckResult(
         name=name,
         description=description,
-        topic=topic,  # type: ignore[arg-type]
+        topic=topic,
         reference=_REFERENCE,
         languages=[],
         present=present,
@@ -27,7 +27,7 @@ def _make_result(
 
 
 def _make_score(topic: Topic, passed: int, total: int) -> TopicScore:
-    return TopicScore(topic=topic, passed=passed, total=total)  # type: ignore[arg-type]
+    return TopicScore(topic=topic, passed=passed, total=total)
 
 
 def test_render_markdown_returns_string() -> None:
