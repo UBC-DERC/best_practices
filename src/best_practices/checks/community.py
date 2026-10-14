@@ -1,5 +1,5 @@
 # src/best_practices/checks/community.py
-"""Organization-group best-practice checks.
+"""Community-group best-practice checks.
 
 Checks in this module verify that a repository follows basic community
 conventions: documentation, readme, funding badges, contributor guidelines,
@@ -15,6 +15,7 @@ to the ``CHECKS`` list at the bottom of this file.
 """
 
 from pathlib import Path
+import re
 
 from best_practices.models import Check
 
@@ -71,6 +72,24 @@ def check_man_folder_pkg(repro_root:Path) -> bool:
     """
     return (repro_root/"man").is_dir()
 
+def check_funder_ref(repro_root:Path) -> bool:
+    """Return True if the repository root contains a reference to a funding organization.
+
+    This check is to see if the user has set up a documentation folder called
+    ```man```. This isn't the only kind of documentation available in R, but
+    it's one of the options.
+
+    Args:
+        repo_root: Path to the root of the repository being evaluated.
+
+    Returns:
+        True if ```man``` exists as a folder directly under repo_root.
+    """
+    contents:str = (repro_root/"README.md").read_text(encoding="utf-8")
+    funder_name:bool = re.search(pattern="[NSF|NSERC|CIHR|SSHRC|NCE|CRC]",string=contents) is not None
+    funding_statement:bool = re.search(pattern="funded in part",string=contents) is not None
+    return funder_name or funding_statement
+
 # ---------------------------------------------------------------------------
 # Check registry for this module
 # ---------------------------------------------------------------------------
@@ -78,7 +97,7 @@ def check_man_folder_pkg(repro_root:Path) -> bool:
 CHECKS: list[Check] = [
     Check(
         name="mkdocs_yaml",
-        description="The repository root an mkdocs.y[a]ml file that would be used to build documentation.",
+        description="The repository root has an mkdocs.y[a]ml file that would be used to build documentation.",
         topic="community",
         reference=_REFERENCE,
         method=check_mkdocs_yaml,
@@ -100,4 +119,12 @@ CHECKS: list[Check] = [
         method=check_man_folder_pkg,
         languages=["r"],
       ),
+    Check(
+        name="funding_reference",
+        description="Funders are identified in the repository README file.",
+        topic="community",
+        reference=_REFERENCE,
+        method = check_funder_ref,
+        languages=["r","python"]
+    ),
 ]
