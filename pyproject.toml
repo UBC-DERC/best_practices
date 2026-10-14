@@ -38,6 +38,13 @@ exclude = [
     "docs"
   ]
 
+[tool.ruff.lint]
+extend-select = ["D"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+
 [tool.pytest.ini_options]
 testpaths = [
     "tests"
