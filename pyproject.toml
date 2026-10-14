@@ -13,7 +13,8 @@ license = "MIT"
 requires-python = ">=3.12"
 
 dependencies = [
-    "python-dotenv>=1.2.3"
+    "pydantic>=2.14.0",
+    "python-dotenv>=1.2.3",
 ]
 
 [build-system]
@@ -25,6 +26,7 @@ dev = [
     "ruff>=0.16.0",
     "pytest>=7.4.0",
     "pytest-cov>=4.1.0",
+    "best-practices",
 ]
 
 [tool.ruff]
@@ -53,3 +55,6 @@ directory = "coverage_html_report"
 fail_under = 70
 format = "markdown"
 skip_empty = true
+
+[tool.uv.sources]
+best-practices = { workspace = true }
