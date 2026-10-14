@@ -1,7 +1,7 @@
 # tests/test_report.py
 """Tests for the Markdown report renderer."""
 
-from best_practices.models import CheckResult, TopicScore, Topic
+from best_practices.models import CheckResult, Topic, TopicScore
 from best_practices.report import render_markdown
 
 _REFERENCE = "https://ubc-derc.github.io/derc_copier/features/"
