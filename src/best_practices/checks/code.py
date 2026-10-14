@@ -12,3 +12,7 @@ Each check function:
 To add a check, write the function and append a ``Check(...)`` instance
 to the ``CHECKS`` list at the bottom of this file.
 """
+
+from best_practices.models import Check
+
+CHECKS: list[Check] = []
