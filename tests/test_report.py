@@ -55,7 +55,9 @@ def test_render_markdown_contains_topic_heading() -> None:
 
 def test_render_markdown_shows_pass_symbol() -> None:
     """Passing checks should show ✓ in the report."""
-    results = [_make_result("readme_exists", "attribution", True, "README.md is present.")]
+    results = [
+        _make_result("readme_exists", "attribution", True, "README.md is present.")
+    ]
     scores = [_make_score("attribution", 1, 1)]
     report = render_markdown(results, scores)
     assert "✓" in report
@@ -63,7 +65,9 @@ def test_render_markdown_shows_pass_symbol() -> None:
 
 def test_render_markdown_shows_fail_symbol() -> None:
     """Failing checks should show ✗ in the report."""
-    results = [_make_result("readme_exists", "attribution", False, "README.md is present.")]
+    results = [
+        _make_result("readme_exists", "attribution", False, "README.md is present.")
+    ]
     scores = [_make_score("attribution", 0, 1)]
     report = render_markdown(results, scores)
     assert "✗" in report

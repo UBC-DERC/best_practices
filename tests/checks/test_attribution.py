@@ -122,15 +122,15 @@ def test_author_in_pyproject_passes(tmp_path: Path) -> None:
 
 def test_author_in_pyproject_fails_empty_authors(tmp_path: Path) -> None:
     """An empty authors list should fail."""
-    (tmp_path / "pyproject.toml").write_text(
-        "[project]\nname = 'demo'\nauthors = []\n"
-    )
+    (tmp_path / "pyproject.toml").write_text("[project]\nname = 'demo'\nauthors = []\n")
     assert check_author_in_pyproject(tmp_path) is False
 
 
 def test_author_in_pyproject_fails_no_project_table(tmp_path: Path) -> None:
     """A pyproject.toml with no [project] table should fail gracefully."""
-    (tmp_path / "pyproject.toml").write_text("[build-system]\nrequires = ['hatchling']\n")
+    (tmp_path / "pyproject.toml").write_text(
+        "[build-system]\nrequires = ['hatchling']\n"
+    )
     assert check_author_in_pyproject(tmp_path) is False
 
 

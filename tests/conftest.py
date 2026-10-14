@@ -49,7 +49,7 @@ def full_repo(tmp_path: Path) -> Path:
         ".gitignore",
         ".editorconfig",
         ".copier-answers.yml",
-        "mkdocs.yml"
+        "mkdocs.yml",
     ]
     for name in root_files:
         if name == "README.md":
@@ -83,7 +83,9 @@ def full_repo(tmp_path: Path) -> Path:
     # Docs directory:
     (tmp_path / "docs").mkdir()
 
-    (tmp_path / "CITATION.cff").write_text("cff-version: 1.2.0\norcid: 0000-0000-0000-000X\n")
+    (tmp_path / "CITATION.cff").write_text(
+        "cff-version: 1.2.0\norcid: 0000-0000-0000-000X\n"
+    )
 
     # src layout
     src_pkg = tmp_path / "src" / "test_pkg"

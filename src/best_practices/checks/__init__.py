@@ -17,8 +17,4 @@ from best_practices.checks.community import CHECKS as _COMMUNITY_CHECKS
 from best_practices.checks.organization import CHECKS as _ORGANIZATION_CHECKS
 from best_practices.models import Check
 
-REGISTRY: list[Check] = (
-    _ATTRIBUTION_CHECKS
-    + _ORGANIZATION_CHECKS
-    + _COMMUNITY_CHECKS
-)
+REGISTRY: list[Check] = _ATTRIBUTION_CHECKS + _ORGANIZATION_CHECKS + _COMMUNITY_CHECKS

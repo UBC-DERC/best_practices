@@ -68,10 +68,11 @@ def run_checks(repo_root: Path) -> list[CheckResult]:
     """
     detected: list[Language] = detect_language(repo_root)
     applicable = [
-        c for c in REGISTRY
-        if not c.languages                                    # universal check
-        or not detected                                       # unknown language — run all
-        or any(lang in c.languages for lang in detected)     # language matches
+        c
+        for c in REGISTRY
+        if not c.languages  # universal check
+        or not detected  # unknown language — run all
+        or any(lang in c.languages for lang in detected)  # language matches
     ]
     return [_run_check(check, repo_root) for check in applicable]
 

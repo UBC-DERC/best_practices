@@ -41,6 +41,7 @@ def check_repo_has_files(repo_root: Path) -> bool:
     """
     return any(repo_root.iterdir())
 
+
 def check_repo_has_data(repo_root: Path) -> bool:
     """Return True if the repository root contains a data folder.
 
@@ -53,7 +54,8 @@ def check_repo_has_data(repo_root: Path) -> bool:
     Returns:
         True if there is a ```data``` folder in the repo.
     """
-    return (repo_root/"data").is_dir()
+    return (repo_root / "data").is_dir()
+
 
 def check_repo_has_git(repo_root: Path) -> bool:
     """Return True if project has git tracking.
@@ -73,6 +75,7 @@ def check_repo_has_git(repo_root: Path) -> bool:
     except git.exc.InvalidGitRepositoryError:
         return False
 
+
 # ---------------------------------------------------------------------------
 # Check registry for this module
 # ---------------------------------------------------------------------------
@@ -90,13 +93,13 @@ CHECKS: list[Check] = [
         description="The project has a dedicated data folder.",
         topic="organization",
         reference=_REFERENCE,
-        method=check_repo_has_data
+        method=check_repo_has_data,
     ),
     Check(
         name="repo_has_git",
         description="The repository uses git for version control.",
         topic="organization",
         reference=_REFERENCE,
-        method=check_repo_has_git
-    )
+        method=check_repo_has_git,
+    ),
 ]
