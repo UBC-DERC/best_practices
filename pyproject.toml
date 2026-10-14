@@ -13,8 +13,12 @@ license = "MIT"
 requires-python = ">=3.12"
 
 dependencies = [
-    "python-dotenv>=1.2.3"
+    "gitpython>=3.2.1",
+    "pydantic>=2.14.0",
 ]
+
+[project.scripts]
+best-practices = "best_practices.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.11.20,<0.12.0"]
@@ -25,6 +29,7 @@ dev = [
     "ruff>=0.16.0",
     "pytest>=7.4.0",
     "pytest-cov>=4.1.0",
+    "best-practices",
 ]
 
 [tool.ruff]
@@ -34,14 +39,20 @@ exclude = [
     "docs"
   ]
 
+[tool.ruff.lint]
+extend-select = ["D"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+
 [tool.pytest.ini_options]
 testpaths = [
     "tests"
   ]
  addopts = ["--maxfail=5", "-rf"]
  console_output_style = "progress"
- max_warnings = 5
- strict = true
+ strict_markers = true
 
 [tool.coverage.run]
 branch = true
@@ -53,3 +64,6 @@ directory = "coverage_html_report"
 fail_under = 70
 format = "markdown"
 skip_empty = true
+
+[tool.uv.sources]
+best-practices = { workspace = true }
