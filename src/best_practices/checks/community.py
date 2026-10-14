@@ -74,19 +74,21 @@ def check_man_folder_pkg(repo_root:Path) -> bool:
 def check_funder_ref(repo_root:Path) -> bool:
     """Return True if the repository root contains a reference to a funding organization.
 
-    This check is to see if the user has set up a documentation folder called
-    ```man```. This isn't the only kind of documentation available in R, but
-    it's one of the options.
+    This check is to see if the user has referenced an external funding source. We look
+    for either a funding organization, or a statement that says "funded in part".
 
     Args:
         repo_root: Path to the root of the repository being evaluated.
 
     Returns:
-        True if ```man``` exists as a folder directly under repo_root.
+        True if there's some funding statement in README.md.
     """
-    contents:str = (repo_root/"README.md").read_text(encoding="utf-8")
-    funder_name:bool = re.search(pattern="[NSF|NSERC|CIHR|SSHRC|NCE|CRC]",string=contents) is not None
-    funding_statement:bool = re.search(pattern="funded in part",string=contents) is not None
+    readme = repo_root / "README.md"
+    if not readme.is_file():
+      return False
+    contents:str = readme.read_text(encoding="utf-8")
+    funder_name:bool = re.search(pattern=r"NSF|NSERC|CIHR|SSHRC|NCE|CRC",string=contents) is not None
+    funding_statement:bool = re.search(pattern=r"funded in part",string=contents) is not None
     return funder_name or funding_statement
 
 # ---------------------------------------------------------------------------
