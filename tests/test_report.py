@@ -1,7 +1,7 @@
 # tests/test_report.py
 """Tests for the Markdown report renderer."""
 
-from best_practices.models import CheckResult, TopicScore
+from best_practices.models import CheckResult, TopicScore, Topic
 from best_practices.report import render_markdown
 
 _REFERENCE = "https://ubc-derc.github.io/derc_copier/features/"
@@ -9,7 +9,7 @@ _REFERENCE = "https://ubc-derc.github.io/derc_copier/features/"
 
 def _make_result(
     name: str,
-    topic: str,
+    topic: Topic,
     present: bool,
     description: str = "A check.",
 ) -> CheckResult:
@@ -20,13 +20,13 @@ def _make_result(
         description=description,
         topic=topic,  # type: ignore[arg-type]
         reference=_REFERENCE,
-        language="both",
+        languages=[],
         present=present,
         detail=f"{symbol} {description}",
     )
 
 
-def _make_score(topic: str, passed: int, total: int) -> TopicScore:
+def _make_score(topic: Topic, passed: int, total: int) -> TopicScore:
     return TopicScore(topic=topic, passed=passed, total=total)  # type: ignore[arg-type]
 
 
