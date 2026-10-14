@@ -99,9 +99,7 @@ Now you are ready to work on the project.
 
 ## Funding Statement
 
-<!--
-A short statement about your funding sources.
--->
+This project is funded in part through support from Farm Credit Canada.
 
 ---
 
