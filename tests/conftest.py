@@ -49,6 +49,7 @@ def full_repo(tmp_path: Path) -> Path:
         ".gitignore",
         ".editorconfig",
         ".copier-answers.yml",
+        "mkdocs.yml",
     ]
     for name in root_files:
         if name == "README.md":
@@ -59,7 +60,7 @@ def full_repo(tmp_path: Path) -> Path:
 
     # pyproject.toml with a [tool.ruff] section
     (tmp_path / "pyproject.toml").write_text(
-        "[project]\nname = 'test'\n\n[tool.ruff]\n"
+        "[project]\nname = 'test'\nauthors = [{name = 'Test Author'}]\n\n[tool.ruff]\n"
     )
 
     # GitHub Actions workflow
@@ -78,6 +79,13 @@ def full_repo(tmp_path: Path) -> Path:
     # VSCode hint
     (tmp_path / ".vscode").mkdir()
     (tmp_path / ".vscode" / "extensions.json").write_text("{}\n")
+
+    # Docs directory:
+    (tmp_path / "docs").mkdir()
+
+    (tmp_path / "CITATION.cff").write_text(
+        "cff-version: 1.2.0\norcid: 0000-0000-0000-000X\n"
+    )
 
     # src layout
     src_pkg = tmp_path / "src" / "test_pkg"

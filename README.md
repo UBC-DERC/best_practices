@@ -29,10 +29,32 @@ A very simple use case is to run the tool on this repository:
 git clone https://github.com/UBC-DERC/best_practices.git
 cd best_practices
 uv sync
+uv add --dev best-practices
 uv run best-practices .
 ```
 
-This will identify the different tests that `best-practices` ran. The script will provide an output indicating any deficiencies so that folks can then address these. All tests will be linked to some documentation around the best practice that they identify.
+This will identify the different tests that `best-practices` ran. The script will provide an output indicating any deficiencies so that folks can then address these. All tests will be linked to some documentation around the best practice that they identify:
+
+```bash
+# Best Practices Report
+
+**Overall score: 7 / 7 (100%)**
+
+## Attribution
+Score: 6 / 6 (100%)
+
+- ✓ README.md is present at the repository root. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
+- ✓ CITATION.cff is present at the repository root. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
+- ✓ A licence file (LICENSE, LICENSE.md, or LICENSE.txt) is present. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
+- ✓ pyproject.toml is present at the repository root. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
+- ✓ pyproject.toml declares at least one author in [project.authors]. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
+- ✓ CITATION.cff includes an ORCID identifier for at least one author. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
+
+## Organization
+Score: 1 / 1 (100%)
+
+- ✓ The repository root contains at least one file or directory. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
+```
 
 ## Contribution
 
@@ -40,7 +62,7 @@ This project was developed by:
 
 * [![ORCID](https://img.shields.io/badge/ORCID-0000--0002--2700--4605-green.svg)](https://orcid.org/0000-0002-2700-4605): Simon Goring
 
-This project was developed in part as an attempt to build a tool using an AI assistant ([Claude Sonnet 4.6]()).
+This project was developed in part as an attempt to build a tool using an AI assistant ([Claude Sonnet 4.6]()). Simon Goring conceived of the idea. Simon Goring developed the class structure and architecture for the package. Initial checks and cli scripts were written using Sonnet.
 
 Contributions to this repository are expected to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
@@ -77,9 +99,7 @@ Now you are ready to work on the project.
 
 ## Funding Statement
 
-<!--
-A short statement about your funding sources.
--->
+This project is funded in part through support from Farm Credit Canada.
 
 ---
 
