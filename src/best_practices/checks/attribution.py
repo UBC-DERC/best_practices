@@ -20,8 +20,9 @@ from pathlib import Path
 
 from best_practices.models import Check
 
-_REFERENCE = "https://ubc-derc.github.io/derc_copier/features/"
-
+_REFERENCE = "https://ubc-derc.github.io/derc_copier/attribution/"
+_README = "https://ubc-derc.github.io/derc_copier/attribution/readmes.md"
+_CITATION = "https://ubc-derc.github.io/derc_copier/attribution/citation.md"
 
 # ---------------------------------------------------------------------------
 # Check functions
@@ -151,14 +152,14 @@ CHECKS: list[Check] = [
         name="readme_exists",
         description="README.md is present at the repository root.",
         topic="attribution",
-        reference=_REFERENCE,
+        reference=_README,
         method=check_readme_exists,
     ),
     Check(
         name="citation_exists",
         description="CITATION.cff is present at the repository root.",
         topic="attribution",
-        reference=_REFERENCE,
+        reference=_CITATION,
         method=check_citation_exists,
     ),
     Check(
@@ -188,7 +189,7 @@ CHECKS: list[Check] = [
         name="orcid_in_citation",
         description="CITATION.cff includes an ORCID identifier for at least one author.",
         topic="attribution",
-        reference=_REFERENCE,
+        reference=_CITATION,
         method=check_orcid_in_citation,
     ),
 ]

@@ -5,7 +5,7 @@
 
 [![core_actions](https://github.com/UBC-DERC/best_practices/actions/workflows/actions.yml/badge.svg)](https://github.com/UBC-DERC/best_practices/actions/workflows/actions.yml)
 
-![Best Practices](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/UBC-DERC/best_practices/main/badge.json)
+![Best Practices](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/UBC-DERC/best_practices/main/best-practices-badge.json)
 <!-- badges: end -->
 
 # best-practices
@@ -73,6 +73,29 @@ Score: 3 / 3 (100%)
 - ✓ The repository root contains at least one file or directory. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
 - ✓ The project has a dedicated data folder. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
 - ✓ The repository uses git for version control. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
+```
+
+## Github Actions
+
+This project can also be run through Github Actions, where it will generate both a best practices report, and JSON
+to be used in a [shields.io](https://shields.io) badge.
+
+```yaml
+# .github/workflows/best-practices.yml (in the USER's repo)
+name: Best Practices
+
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: UBC-DERC/best_practices@main
+        with:
+          fail-under: 0
+          badge: best-practices-badge.json
+          output: best-practices-report.md
 ```
 
 ## Contribution

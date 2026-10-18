@@ -9,7 +9,6 @@ authors = [
 
 license = "MIT"
 
-
 requires-python = ">=3.11"
 
 dependencies = [
@@ -51,9 +50,9 @@ convention = "google"
 testpaths = [
     "tests"
   ]
- addopts = ["--maxfail=5", "-rf"]
- console_output_style = "progress"
- strict_markers = true
+addopts = ["--maxfail=5", "-rf"]
+console_output_style = "progress"
+strict_markers = true
 
 [tool.coverage.run]
 branch = true
