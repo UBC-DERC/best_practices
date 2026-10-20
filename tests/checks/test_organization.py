@@ -38,4 +38,3 @@ def test_repo_has_git(tmp_path: Path) -> None:
 def test_repo_has_no_git(tmp_path: Path) -> None:
     """A repository with no git structure should fail."""
     assert check_repo_has_git(repo_root=tmp_path) is False
-

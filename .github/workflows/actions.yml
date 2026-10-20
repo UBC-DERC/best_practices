@@ -12,7 +12,22 @@ on:
 permissions: {}
 
 jobs:
-    build:
+    cleanup:
+      runs-on: ubuntu-latest
+      steps:
+        - name: checkout
+          uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        - name: Install uv
+          uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        - run: uv sync
+        - name: Lint (ruff)
+          run: uv run ruff check .
+        - name: Lint formatting (ruff)
+          run: uv run ruff format --check .
+        - name: Type check (ty)
+          run: uv run ty check
+
+    test:
         runs-on: ubuntu-latest
         strategy:
           matrix:
@@ -26,17 +41,11 @@ jobs:
                 enable-cache: true
                 python-version: ${{ matrix.python-version }}
             - run: uv sync
-            - name: Lint (ruff)
-              run: uv run ruff check .
-            - name: Lint formatting (ruff)
-              run: uv run ruff format --check .
-            - name: Type check (ty)
-              run: uv run ty check
             - name: Test package load with coverage
               run: uv run pytest --cov=.
     badge:
       runs-on: ubuntu-latest
-      needs: build
+      needs: [cleanup, test]
       if: github.ref == 'refs/heads/main'
       permissions:
         contents: write
