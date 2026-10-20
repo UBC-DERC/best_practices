@@ -1,15 +1,26 @@
 <!-- badges: start -->
-[![lifecycle](https://img.shields.io/badge/lifecycle-lifecycle_planning-crimson.svg)]()
+[![lifecycle](https://img.shields.io/badge/lifecycle-lifecycle_experimental-orange.svg)]()
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[![core_actions](https://github.com/UBC-DERC/best_practices/actions/workflows/actions.yml/badge.svg)](https://github.com/UBC-DERC/best_practices/actions/workflows/actions.yml)
+
+![Best Practices](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/UBC-DERC/best_practices/main/best-practices-badge.json)
 <!-- badges: end -->
 
 # best-practices
 
 ## Goal
 
-Monitoring project best practices with a Python observer. The goal of this project is to implement a set of tools that can survey a package to provide users with a set of tools and documentation to help support the adoption of coding best practices.
+The goal of this project is to implement a set of tools that can survey a research project to provide users with a set of tools and documentation that will help support the adoption of coding best practices. Most importantly, it is to support the adoption of best-practices among early-career researchers through actionable checklists and clear guidance.
+
+## Audience
+
+This project is intended to support **early-career researchers** who may not be familiar with software development tools, principles of FAIR data management, testing and linting. For example:
+
+* Antônia is working on a project using R. She has her data and scripts in a single folder on her laptop. She has only started learning to use R during her Masters, but wants to improve her skills, and keep her project bug free.
+* Adamu is building a Python package as part of his work. In trying to collaborate with others, he'd like to make sure that everyone sticks to the same project standards.
+* Koto is a scientist, supervising students. They want to teach their students to write code as part of their projects, but there isn't a comprehensive course for them to take.
 
 ## Approach
 
@@ -29,7 +40,6 @@ A very simple use case is to run the tool on this repository:
 git clone https://github.com/UBC-DERC/best_practices.git
 cd best_practices
 uv sync
-uv add --dev best-practices
 uv run best-practices .
 ```
 
@@ -38,7 +48,7 @@ This will identify the different tests that `best-practices` ran. The script wil
 ```bash
 # Best Practices Report
 
-**Overall score: 7 / 7 (100%)**
+**Overall score: 12 / 12 (100%)**
 
 ## Attribution
 Score: 6 / 6 (100%)
@@ -50,10 +60,42 @@ Score: 6 / 6 (100%)
 - ✓ pyproject.toml declares at least one author in [project.authors]. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
 - ✓ CITATION.cff includes an ORCID identifier for at least one author. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
 
+## Community
+Score: 3 / 3 (100%)
+
+- ✓ The repository root has an mkdocs.y[a]ml file that would be used to build documentation. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
+- ✓ The repository root has a docs folder that would contain the documentation. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
+- ✓ Funders are identified in the repository README file. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
+
 ## Organization
-Score: 1 / 1 (100%)
+Score: 3 / 3 (100%)
 
 - ✓ The repository root contains at least one file or directory. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
+- ✓ The project has a dedicated data folder. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
+- ✓ The repository uses git for version control. ([guidance](https://ubc-derc.github.io/derc_copier/features/))
+```
+
+## Github Actions
+
+This project can also be run through Github Actions, where it will generate both a best practices report, and JSON
+to be used in a [shields.io](https://shields.io) badge.
+
+```yaml
+# .github/workflows/best-practices.yml (in the USER's repo)
+name: Best Practices
+
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: UBC-DERC/best_practices@main
+        with:
+          fail-under: 0
+          badge: best-practices-badge.json
+          output: best-practices-report.md
 ```
 
 ## Contribution
@@ -62,7 +104,7 @@ This project was developed by:
 
 * [![ORCID](https://img.shields.io/badge/ORCID-0000--0002--2700--4605-green.svg)](https://orcid.org/0000-0002-2700-4605): Simon Goring
 
-This project was developed in part as an attempt to build a tool using an AI assistant ([Claude Sonnet 4.6]()). Simon Goring conceived of the idea. Simon Goring developed the class structure and architecture for the package. Initial checks and cli scripts were written using Sonnet.
+This project was developed in part as an attempt to build a tool using an AI assistant ([Claude Sonnet 4.6](https://claude.ai)). Simon Goring conceived of the idea. Simon Goring developed the class structure and architecture for the package. Initial checks and cli scripts were written using Sonnet. The CHANGELOG was maintained using Sonnet, and internal project checklists were also managed using Sonnet 4.6.
 
 Contributions to this repository are expected to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
@@ -76,9 +118,11 @@ cd best_practices
 uv sync
 ```
 
-## How to Use this Repository
+## How to Use `best-practices`
 
-`best-practices` organizes project best practices into four main categories, further expanded in the [`derc_copier`](https://ubc-derc.github.io/derc_copier):
+### What Gets Checked
+
+`best-practices` organizes project best practices into four main categories, further expanded in the [`derc_copier`](https://ubc-derc.github.io/derc_copier)
 
 [Building Better Code](https://ubc-derc.github.io/derc_copier/copier/building/) — style, testing, and the tooling that keeps your code clean and reliable.
 [Attribution](https://ubc-derc.github.io/derc_copier/copier/attribution/) — citation, licensing, and describing your work so it can be found and credited.

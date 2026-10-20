@@ -56,8 +56,9 @@ def run_checks(repo_root: Path) -> list[CheckResult]:
     """Run all applicable checks against a repository root.
 
     The detected language of the repository (``"python"``, ``"r"``, or
-    ``"both"``) filters the global registry so that only relevant checks
-    are evaluated. Checks whose ``language`` field is ``"both"`` always run.
+    an empty list for a project using both) filters the global registry so
+    that only relevant checks are evaluated. Checks whose ``language`` field
+    is empty always run.
 
     Args:
         repo_root: Path to the root of the repository being evaluated.

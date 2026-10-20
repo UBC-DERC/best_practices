@@ -1,0 +1,43 @@
+name: Best Practices Check
+description: >
+  Evaluates a repository against a set of coding best practices
+  across four themes (organization, attribution, community, and code)
+  and produces a Markdown report and shields.io badge JSON.
+author: Simon Goring
+
+inputs:
+  path:
+    description: >
+      Path to the repository root to evaluate. This will generally
+      be `.`, unless the repository to be examined is structured
+      in a way that the project itself is out of the root.
+    required: false
+    default: "."
+  fail-under:
+    description: >
+      Exit with a non-zero result if the overall 'best-practices'
+      score falls below this percentage.
+      Omit (or set to 0) for informational-only mode.
+    required: false
+    default: "0"
+  output:
+    description: Path to write the Markdown report file.
+    required: false
+    default: "best-practices-report.md"
+  badge:
+    description: Path to write the shields.io badge JSON file.
+    required: false
+    default: "best-practices-badge.json"
+
+runs:
+  using: composite
+  steps:
+    - name: Install uv
+      uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b
+    - name: Run best-practices
+      shell: bash
+      run: |
+        uvx best-practices ${{ inputs.path }} \
+          --output ${{ inputs.output }} \
+          --badge ${{ inputs.badge }} \
+          ${{ inputs.fail-under != '0' && format('--fail-under {0}', inputs.fail-under) || '' }}

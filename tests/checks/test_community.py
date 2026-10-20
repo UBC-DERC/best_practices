@@ -27,7 +27,7 @@ def test_docs_folder_exists_passes(tmp_path: Path) -> None:
 
 
 def test_docs_folder_exists_fails(tmp_path: Path) -> None:
-    """No doc folder present at the root should fail."""
+    """No doc folder at the root should fail."""
     (tmp_path / "dawc").mkdir()
     assert check_docs_folder(repo_root=tmp_path) is False
 
