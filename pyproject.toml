@@ -1,5 +1,5 @@
 [project]
-name = "best_practices"
+name = "derc-best-practices"
 version = "26.10"
 description = "Monitoring project best practices with a Python observer."
 readme = "README.md"
@@ -17,10 +17,10 @@ dependencies = [
 ]
 
 [project.scripts]
-best-practices = "best_practices.cli:main"
+derc-best-practices = "best_practices.cli:main"
 
 [build-system]
-requires = ["uv_build"]
+requires = ["uv_build>=0.13.4"]
 build-backend = "uv_build"
 
 [dependency-groups]
@@ -28,7 +28,6 @@ dev = [
     "ruff>=0.16.0",
     "pytest>=7.4.0",
     "pytest-cov>=4.1.0",
-    "best-practices",
     "ty",
 ]
 
@@ -65,5 +64,5 @@ fail_under = 70
 format = "markdown"
 skip_empty = true
 
-[tool.uv.sources]
-best-practices = { workspace = true }
+[tool.uv.build-backend]
+module-name = "best_practices"

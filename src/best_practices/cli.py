@@ -1,7 +1,7 @@
 # src/best_practices/cli.py
 """Command-line interface for best_practices.
 
-Entry point: ``best-practices <path> [options]``
+Entry point: ``derc-best-practices <path> [options]``
 
 This module is intentionally thin. It parses arguments, calls the public
 API (``run_checks`` and ``score_by_topic``), delegates rendering to
@@ -12,15 +12,15 @@ Usage examples
 --------------
 Print a report to stdout (always exits 0)::
 
-    best-practices /path/to/repo
+    derc-best-practices /path/to/repo
 
 Save the report and write a badge file::
 
-    best-practices . --output report.md --badge best-practices-badge.json
+    derc-best-practices . --output report.md --badge best-practices-badge.json
 
 Fail CI if the overall score falls below 75 %::
 
-    best-practices . --fail-under 75
+    derc-best-practices . --fail-under 75
 """
 
 import argparse
@@ -39,7 +39,7 @@ def _build_parser() -> argparse.ArgumentParser:
         A configured ``ArgumentParser`` instance.
     """
     parser = argparse.ArgumentParser(
-        prog="best-practices",
+        prog="derc-best-practices",
         description=(
             "Evaluate a repository against research software best practices "
             "and produce a Markdown report and optional badge file."
