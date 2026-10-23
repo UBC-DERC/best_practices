@@ -20,9 +20,9 @@ from pathlib import Path
 
 from best_practices.models import Check
 
-_REFERENCE = "https://ubc-derc.github.io/derc_copier/attribution/"
-_README = "https://ubc-derc.github.io/derc_copier/attribution/readmes.md"
-_CITATION = "https://ubc-derc.github.io/derc_copier/attribution/citation.md"
+_REFERENCE = "https://ubc-derc.github.io/derc_copier/copier/attribution/"
+_README = "https://ubc-derc.github.io/derc_copier/copier/attribution/readmes/"
+_CITATION = "https://ubc-derc.github.io/derc_copier/copier/attribution/citation/"
 
 # ---------------------------------------------------------------------------
 # Check functions
@@ -76,22 +76,6 @@ def check_license_exists(repo_root: Path) -> bool:
     """
     candidates = ["LICENSE", "LICENSE.md", "LICENSE.txt"]
     return any((repo_root / name).is_file() for name in candidates)
-
-
-def check_pyproject_exists(repo_root: Path) -> bool:
-    """Return True if pyproject.toml exists at the repository root.
-
-    ``pyproject.toml`` is the modern, PEP-517-compliant way to declare a
-    Python package's metadata, build system, and tool configuration. Its
-    presence signals that the project is properly packaged.
-
-    Args:
-        repo_root: Path to the root of the repository being evaluated.
-
-    Returns:
-        True if ``pyproject.toml`` is present at the repository root.
-    """
-    return (repo_root / "pyproject.toml").is_file()
 
 
 def check_author_in_pyproject(repo_root: Path) -> bool:
@@ -168,14 +152,6 @@ CHECKS: list[Check] = [
         topic="attribution",
         reference=_REFERENCE,
         method=check_license_exists,
-    ),
-    Check(
-        name="pyproject_exists",
-        description="pyproject.toml is present at the repository root.",
-        topic="attribution",
-        reference=_REFERENCE,
-        method=check_pyproject_exists,
-        languages=["python"],
     ),
     Check(
         name="author_in_pyproject",

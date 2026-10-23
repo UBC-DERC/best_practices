@@ -18,7 +18,7 @@ from pathlib import Path
 
 from best_practices.models import Check
 
-_REFERENCE = "https://ubc-derc.github.io/derc_copier/features/"
+_REFERENCE = "https://ubc-derc.github.io/derc_copier/copier/community/"
 
 
 # ---------------------------------------------------------------------------
