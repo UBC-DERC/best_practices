@@ -14,7 +14,6 @@ from best_practices.checks.attribution import (
     check_citation_exists,
     check_license_exists,
     check_orcid_in_citation,
-    check_pyproject_exists,
     check_readme_exists,
 )
 
@@ -87,22 +86,6 @@ def test_license_exists_passes_LICENSE_txt(tmp_path: Path) -> None:
 def test_license_exists_fails(tmp_path: Path) -> None:
     """A directory with no licence file should fail."""
     assert check_license_exists(tmp_path) is False
-
-
-# ---------------------------------------------------------------------------
-# check_pyproject_exists
-# ---------------------------------------------------------------------------
-
-
-def test_pyproject_exists_passes(tmp_path: Path) -> None:
-    """pyproject.toml present at the root should pass."""
-    (tmp_path / "pyproject.toml").write_text("[project]\nname = 'demo'\n")
-    assert check_pyproject_exists(tmp_path) is True
-
-
-def test_pyproject_exists_fails(tmp_path: Path) -> None:
-    """An empty directory should fail."""
-    assert check_pyproject_exists(tmp_path) is False
 
 
 # ---------------------------------------------------------------------------

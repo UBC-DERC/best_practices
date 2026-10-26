@@ -13,8 +13,11 @@ To add a new check:
 """
 
 from best_practices.checks.attribution import CHECKS as _ATTRIBUTION_CHECKS
+from best_practices.checks.code import CHECKS as _BUILDING_CHECKS
 from best_practices.checks.community import CHECKS as _COMMUNITY_CHECKS
 from best_practices.checks.organization import CHECKS as _ORGANIZATION_CHECKS
 from best_practices.models import Check
 
-REGISTRY: list[Check] = _ATTRIBUTION_CHECKS + _ORGANIZATION_CHECKS + _COMMUNITY_CHECKS
+REGISTRY: list[Check] = (
+    _ATTRIBUTION_CHECKS + _ORGANIZATION_CHECKS + _COMMUNITY_CHECKS + _BUILDING_CHECKS
+)

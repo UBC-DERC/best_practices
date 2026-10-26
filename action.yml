@@ -37,7 +37,7 @@ runs:
     - name: Run best-practices
       shell: bash
       run: |
-        uvx best-practices ${{ inputs.path }} \
+        uvx derc-best-practices ${{ inputs.path }} \
           --output ${{ inputs.output }} \
           --badge ${{ inputs.badge }} \
           ${{ inputs.fail-under != '0' && format('--fail-under {0}', inputs.fail-under) || '' }}
