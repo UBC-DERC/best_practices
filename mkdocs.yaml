@@ -1,13 +1,12 @@
-site_name: best-practices
-site_url: https://ubc-derc.github.io/derc_copier
-site_description: >-
- Monitoring project best practices with a Python observer.
+site_name: derc-best-practices
+site_url: https://ubc-derc.github.io/best_practices
+ Monitoring software project best practices with a Python observer.
 site_author: Simon Goring
 copyright: >-
   Copyright &copy; UBC Dairy Education and Research Centre (DERC)
 
-repo_url: https://github.com/UBC-DERC/derc_copier
-repo_name: UBC-DERC/derc_copier
+repo_url: https://github.com/UBC-DERC/best_practices
+repo_name: UBC-DERC/best_practices
 edit_uri: edit/main/docs/
 
 theme:
@@ -53,7 +52,9 @@ theme:
 
 plugins:
   - search
-  - social
+  - mkdocstrings
+  - social:
+      enabled: !ENV [CI, false]
   - git-revision-date-localized:
       type: date
       fallback_to_build_date: true
@@ -86,8 +87,9 @@ extra_css:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/UBC-DERC/derc_copier
-      name: DERC copier template on GitHub
+      link: https://github.com/UBC-DERC/best_practices
+      name: DERC Best Practices Project
 
 nav:
   - Home: index.md
+  - Reference: reference.md

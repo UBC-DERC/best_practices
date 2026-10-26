@@ -55,7 +55,13 @@ dev = [
     "ty>=0.0.87",
     "pre-commit>=4.7.0",
 ]
-docs = ["mkdocs-material", "mkdocstrings[python]"]
+docs =  [
+    "mkdocs<2",
+    "mkdocs-material[imaging]",                   # [imaging] is needed by the social plugin
+    "mkdocs-git-revision-date-localized-plugin",
+    "mkdocs-minify-plugin",
+    "mkdocstrings[python]",
+  ]
 
 [tool.ruff]
 exclude = [
